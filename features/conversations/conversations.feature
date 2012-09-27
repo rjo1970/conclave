@@ -21,6 +21,11 @@ Feature: Conversations
     When I create a new conversation on the forum
     Then I should see the conversation's index page
 
+  Scenario: Create an empty conversation
+    Given a forum
+    When I create an empty conversation on the forum
+    Then I should see the required field alert
+
   Scenario: Conversation comments display on the conversation comments page
     Given a conversation with a comment
     When I visit the conversation comments page

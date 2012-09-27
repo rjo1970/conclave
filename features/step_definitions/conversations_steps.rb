@@ -92,6 +92,12 @@ When /^I go to the new conversation form$/ do
   visit new_forum_conversation_path(@forum)
 end
 
+When /^I create an empty conversation on the forum$/ do
+  visit forum_path(@forum)
+  click_link "New Conversation"
+  click_button "Submit Conversation"
+end
+
 
 #
 # Then Steps
@@ -190,4 +196,8 @@ Then /^I should see a breadcrumb link with the conversation ID$/ do
   within("ul.breadcrumb") do
     page.should have_link @conversation.id.to_s
   end  
+end
+
+Then /^I should see the required field alert$/ do
+  page.should have_selector ".alert-error"
 end

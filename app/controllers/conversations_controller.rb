@@ -18,7 +18,9 @@ class ConversationsController < ApplicationController
       c.comments << @comment
     end
     @comment.conversation = @conversation
-    if @conversation.save!
+
+    if #@conversation.valid? &&  #  This papers over a larger problem, I suspect
+       @conversation.save!
       redirect_to conversation_comments_path(@conversation)
     else
       render action: "new"
